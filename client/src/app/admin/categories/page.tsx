@@ -1,22 +1,19 @@
+import { CategoryTable, getCategories, ICategory } from "@/modules/category";
 import { HeaderPage } from "@/modules/shared";
 
-export default async function functionName() {
-    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/products`, {
-        headers: {
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer 13|XIGZ7Xv3FLGk4gJt7Tmjq0QdH5iQL1doOLE3or0u2f75d8d6`
-        }
-    });
-    const data = await res.json();
+export default async function CategoriesPage() {
 
+    const response = await getCategories();
+    const categories = response?.categories as ICategory[];
 
     return (
         <div>
-            <HeaderPage title="Dashboard"
+            <HeaderPage title="Categories"
                 btnTitle="Add Category"
-                description="Welcome to the admin dashboard"
+                description="Welcome to the admin Categories dashboard"
                 pathName="/admin/categories/add"
             />
+            <CategoryTable catefories={categories} />
         </div>
     );
 }

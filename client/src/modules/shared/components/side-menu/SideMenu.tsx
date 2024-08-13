@@ -1,4 +1,6 @@
 import { Logo } from "@/assets/icons/Logo";
+import { sideMenuOptions } from "@/constants/side-menu-options";
+import { SideMenuOption } from "./SideMenuOption";
 
 export function SideMenu() {
     return (
@@ -14,6 +16,16 @@ export function SideMenu() {
                     Gestiona tu Inventario
                 </p>
             </div>
+
+            <ul className="space-y-6">
+                {
+                    sideMenuOptions.map(({ path, icon, name }, index) => {
+                        return (
+                            <SideMenuOption key={name + index} icon={icon} path={path} title={name} />
+                        )
+                    })
+                }
+            </ul>
         </nav>
     )
 }

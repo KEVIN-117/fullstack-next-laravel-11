@@ -9,7 +9,7 @@ interface Props {
 
 export function HeaderPage({ title, description, btnTitle, pathName }: Props) {
     return (
-        <section className="pt-8">
+        <section className="container mt-8 set-image-bg rounded-xl overflow-hidden">
             <div className="header">
                 <div>
                     <h1 className="text-2xl font-bold">

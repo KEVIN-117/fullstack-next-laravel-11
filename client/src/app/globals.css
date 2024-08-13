@@ -16,7 +16,6 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    
   }
 
   .login__form {
@@ -36,7 +35,7 @@
   }
 
   .sidemenu__link {
-    @apply flex gap-4 items-center p-3 rounded-lg font-semibold transition-colors duration-1000 hover:bg-gradient-to-tr from-primary-700 to-indigo-600;
+    @apply flex gap-4 items-center p-3 rounded-lg font-semibold transition-colors duration-1000 hover:bg-gradient-to-tr from-primary-700 to-indigo-600 cursor-pointer;
   }
 
   .sidemenu__link span {
@@ -48,15 +47,26 @@
   }
 
   .sidemenu__link--active {
-    @apply bg-gradient-to-br from-primary-700 to-indigo-600;
+    @apply bg-gradient-to-br from-primary-600 via-indigo-700 to-secondary-200;
   }
 
   .sidemenu__link--active span {
     @apply text-white;
   }
 
+  .set-image-bg {
+    background: url("../assets/images/dddepth.png") no-repeat,
+      linear-gradient(
+        to bottom right,
+        rgba(6, 149, 255, 1),
+        rgba(67, 56, 202, 1),
+        rgba(72, 24, 120, 0.8)
+      );
+      background-position: 0cqmax;
+  }
+
   .header {
-    @apply container flex flex-col gap-4 md:flex-row justify-between md:items-center;
+    @apply flex flex-col gap-4 md:flex-row justify-between md:items-center p-10 backdrop-blur-0 bg-slate-800/80;
   }
 
   .product__list {
