@@ -32,7 +32,7 @@
   }
 
   .sidemenu__logo {
-    @apply font-extrabold text-xl mb-10 flex items-center;
+    @apply font-extrabold text-xl mb-10 flex flex-col items-center rounded-xl backdrop-blur-lg bg-gradient-to-br from-primary-600 via-indigo-700 to-secondary-200 overflow-hidden;
   }
 
   .sidemenu__link {
