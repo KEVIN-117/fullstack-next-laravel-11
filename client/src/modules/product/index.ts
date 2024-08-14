@@ -1,5 +1,6 @@
-export  { ProductTable } from "./components/product-table/ProductTable";
-export  { ProductDetail } from "./components/product-details/ProductDetail";
+export { ProductTable } from "./components/product-table/ProductTable";
+export { ProductDetail } from "./components/product-details/ProductDetail";
+export { CreateProduct } from "./components/CreateProduct";
 
 export { getProducts } from "./actions/get-products";
 export { getProduct } from "./actions/get-product";

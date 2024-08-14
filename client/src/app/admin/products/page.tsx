@@ -20,7 +20,7 @@ export default async function CategoriesPage({
             <HeaderPage title="Products"
                 btnTitle="Add Product"
                 description="Welcome to the products dashboard"
-                pathName="/admin/categories/add"
+                pathName="/admin/products/create"
             />
 
 

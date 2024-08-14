@@ -5,9 +5,9 @@ interface IProps {
 }
 export default function ProviderName({ children }: IProps) {
     return (
-        <main className="dashboard">
+        <main className="dashboard set-image-bg2">
             <SideMenu />
-            <div className="w-full">
+            <div className="w-full h-screen overflow-y-auto">
                 {children}
             </div>
         </main>

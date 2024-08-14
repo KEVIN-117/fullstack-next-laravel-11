@@ -5,7 +5,6 @@
 @layer utilities {
   .auth__layout {
     background-image: url("../assets//images/bg-auth.jpg");
-    background-color: rgba(0, 0, 0, 0.575);
     background-blend-mode: color;
     background-position: center;
     background-repeat: no-repeat;
@@ -27,7 +26,7 @@
   }
 
   .sidemenu {
-    @apply absolute h-screen flex flex-col -left-[100%] md:relative md:left-0 bg-stone-950 max-w-72 w-full py-10 px-8;
+    @apply sticky h-screen flex flex-col -left-[100%] md:relative md:left-0 backdrop-blur-sm bg-stone-950/90 max-w-72 w-full py-10 px-8;
   }
 
   .sidemenu__logo {
@@ -62,7 +61,12 @@
         rgba(67, 56, 202, 1),
         rgba(72, 24, 120, 0.8)
       );
-      background-position: 0cqmax;
+    background-position: 0cqmax;
+  }
+
+  .set-image-bg2 {
+    background: url("../assets/images/dddepth.png") no-repeat;
+    background-position: 0cqmax;
   }
 
   .header {
