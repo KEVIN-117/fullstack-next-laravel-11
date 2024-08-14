@@ -17,7 +17,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products = Product::all();
+        $products = Product::paginate(8);
 
         if (empty($products)){
             return response()->json([
@@ -26,11 +26,7 @@ class ProductController extends Controller
             ], 200);
         }
 
-        return response()->json([
-            "message" => "Products retrieved successfully",
-            "products" => new ProductCollection($products),
-            "status" => 200
-        ], 200);
+        return new ProductCollection($products);
     }
 
     /**

@@ -1,7 +1,8 @@
 import { Logo } from "@/assets/icons/Logo";
 import { sideMenuOptions } from "@/constants/side-menu-options";
 import { SideMenuOption } from "./SideMenuOption";
-
+import { Button, Image } from "@nextui-org/react";
+import logo from "../../../../assets/images/logo.png"
 export function SideMenu() {
     return (
         <nav className="sidemenu">
@@ -26,6 +27,25 @@ export function SideMenu() {
                     })
                 }
             </ul>
+
+            <div className="mt-auto rounded-xl overflow-hidden bg-gradient-to-br from-primary-600 via-indigo-700 to-secondary-200">
+                <div className="flex flex-col justify-center items-center w-full backdrop-blur-md bg-slate-800/50 p-10">
+
+                    <Image
+                        src="/images/logo.png"
+                        className="rounded-full"
+                        alt="User"
+                    />
+                    <Button
+                        className="w-full mt-4"
+                        variant="shadow"
+                        color="danger"
+                        fullWidth
+                    >
+                        Cerrar Sesión
+                    </Button>
+                </div>
+            </div>
         </nav>
     )
 }

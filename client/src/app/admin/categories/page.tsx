@@ -11,7 +11,7 @@ export default async function CategoriesPage() {
             <HeaderPage title="Categories"
                 btnTitle="Add Category"
                 description="Welcome to the admin Categories dashboard"
-                pathName="/admin/categories/add"
+                pathName="/admin/categories/create"
             />
             <CategoryTable catefories={categories} />
         </div>

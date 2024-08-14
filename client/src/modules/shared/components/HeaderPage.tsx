@@ -1,4 +1,10 @@
+"use client"
+
+import { useRouter } from 'next/navigation'
 import { Button } from "@nextui-org/react";
+import { Add01Icon, ArrowLeft01Icon } from 'hugeicons-react';
+
+
 
 interface Props {
     title: string;
@@ -8,6 +14,7 @@ interface Props {
 }
 
 export function HeaderPage({ title, description, btnTitle, pathName }: Props) {
+    const router = useRouter();
     return (
         <section className="container mt-8 set-image-bg rounded-xl overflow-hidden">
             <div className="header">
@@ -23,9 +30,18 @@ export function HeaderPage({ title, description, btnTitle, pathName }: Props) {
                     color='primary'
                     className='btn_primary'
                     variant='shadow'
+                    onPress={() => {
+                        router.push(pathName)
+                    }}
                 >
+                    {btnTitle.toLowerCase().includes('back') ? (
+                        <ArrowLeft01Icon />
+                    ) : (
+                        <Add01Icon />
+                    )}
                     {btnTitle}
                 </Button>
+
             </div>
         </section>
     )

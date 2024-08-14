@@ -1,16 +1,9 @@
 "use client";
 import { Button, Table, TableBody, TableCell, TableColumn, TableHeader, TableRow, Tooltip } from "@nextui-org/react";
-import { ICategory } from "@/modules/category";
+import { DeleteCategoryModal, ICategory } from "@/modules/category";
 import { EyeIcon, EditIcon, DeleteIcon } from "@/assets/icons";
-
-function formatterDate(date: string) {
-    // format example dia 1 of august of 2021
-    return new Date(date).toLocaleDateString('pt-US', {
-        day: 'numeric',
-        month: 'long',
-        year: 'numeric'
-    });
-}
+import { formatterDate } from "@/utils/timeFormatter";
+import Link from "next/link";
 
 export function CategoryTable({ catefories }: { catefories: ICategory[] }) {
     return (
@@ -51,22 +44,27 @@ export function CategoryTable({ catefories }: { catefories: ICategory[] }) {
                                     <TableCell>
                                         <div className="relative flex items-center gap-2">
                                             <Tooltip
-                                                as={Button}
-                                                color="primary" content="Details">
-                                                <span className="text-lg text-primary cursor-pointer active:opacity-50">
+                                                color="primary"
+                                                content="Details"
+                                            >
+                                                <Link
+                                                    href={`/admin/categories/${category.id}/details`}
+                                                    className="text-lg text-primary cursor-pointer active:opacity-50">
                                                     <EyeIcon />
-                                                </span>
+                                                </Link>
                                             </Tooltip>
-                                            <Tooltip color="warning" content="Edit user">
-                                                <span className="text-lg text-warning cursor-pointer active:opacity-50">
+                                            <Tooltip color="warning" content="Edit">
+                                                <Link
+                                                    href={`/admin/categories/${category.id}/update`}
+                                                    className="text-lg text-warning cursor-pointer active:opacity-50"
+                                                >
                                                     <EditIcon />
-                                                </span>
+                                                </Link>
                                             </Tooltip>
-                                            <Tooltip color="danger" content="Delete user">
-                                                <span className="text-lg text-danger cursor-pointer active:opacity-50">
-                                                    <DeleteIcon />
-                                                </span>
-                                            </Tooltip>
+                                            <DeleteCategoryModal
+                                                id={category.id}
+                                                name={category.name}
+                                            />
                                         </div>
                                     </TableCell>
                                 </TableRow>
