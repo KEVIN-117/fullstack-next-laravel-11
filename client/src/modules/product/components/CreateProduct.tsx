@@ -7,7 +7,6 @@ import { ChangeEvent } from "react";
 import { useState } from "react";
 import { createProduct } from "../actions/create-product";
 import { toast } from "sonner";
-import { log } from "console";
 import { ValidationFailed } from "../types/create-product-response";
 
 export function CreateProduct({ categories }: { categories: ICategory[] }) {

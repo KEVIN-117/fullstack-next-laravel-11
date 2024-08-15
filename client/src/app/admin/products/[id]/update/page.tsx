@@ -1,9 +1,9 @@
-export async function UpdateCategoryPage() {
-    const res = await fetch(``);
-    const data = await res.json();
-    return (
-        <div>
+import React from 'react'
 
-        </div>
-    );
+function UpdatePage() {
+    return (
+        <div>UpdatePage</div>
+    )
 }
+
+export default UpdatePage

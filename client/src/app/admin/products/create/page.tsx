@@ -13,6 +13,7 @@ export default async function CreateProductPage() {
                 description='Welcome to the admin create product dashboard'
                 pathName='/admin/products'
                 title='Create Product'
+                unauthenticatedMessage='auth'
             />
 
             <CreateProduct categories={categories} />
