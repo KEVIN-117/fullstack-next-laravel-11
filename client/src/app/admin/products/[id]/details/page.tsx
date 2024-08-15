@@ -1,10 +1,10 @@
-import { getProduct, ProductDetail } from "@/modules/product";
+import { getProduct, IProduct, ProductDetail } from "@/modules/product";
 import { HeaderPage } from "@/modules/shared"
 
 export default async function ProductDetailsPage({ params }: { params: { id: string } }) {
     const { id } = params;
     const res = await getProduct(id);
-    const product = res.product;
+    const product = res.data?.product as IProduct;
 
     return (
         <div>

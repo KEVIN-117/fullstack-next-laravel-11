@@ -12,15 +12,22 @@ export async function deleteCAtegory(id: string) {
             data,
             error: null
         }
-    } catch (e: any) {
-        console.error(e);
-        if (isAxiosError(e)) {
+    } catch (error: any) {
+        if (isAxiosError(error)) {
             return {
                 data: null,
-                error: e.response?.data.message
+                error: error.response?.data.message,
+                errors: error.response?.data as {
+                    message: string
+                }
             }
         }
-        throw new Error("Error en el servidor");
+        else {
+            return {
+                data: null,
+                error: error.message
+            }
+        }
     }
 
 }

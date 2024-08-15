@@ -5,7 +5,7 @@ import { EyeIcon, EditIcon, DeleteIcon } from "@/assets/icons";
 import { formatterDate } from "@/utils/timeFormatter";
 import Link from "next/link";
 
-export function CategoryTable({ catefories }: { catefories: ICategory[] }) {
+export function CategoryTable({ catefories, message }: { catefories: ICategory[], message: string }) {
     return (
         <div className="pt-8">
             <Table className="container" aria-label="Categories Table">
@@ -23,7 +23,7 @@ export function CategoryTable({ catefories }: { catefories: ICategory[] }) {
                     </TableColumn>
                 </TableHeader>
                 <TableBody
-                    emptyContent="No categories found"
+                    emptyContent={`No categories found or ${message && message}`}
                 >
                     {
                         catefories && catefories.map((category) => {

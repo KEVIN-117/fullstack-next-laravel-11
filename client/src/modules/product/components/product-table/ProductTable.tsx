@@ -7,7 +7,7 @@ import { Button, Table, TableBody, TableCell, TableColumn, TableHeader, TableRow
 import Link from "next/link";
 import React from "react";
 
-export function ProductTable({ products, children }: { products: IProduct[], children: React.ReactNode }) {
+export function ProductTable({ products, children, message }: { products: IProduct[], children: React.ReactNode, message?:string }) {
     return (
         <div className="pt-8">
             <Table
@@ -37,7 +37,7 @@ export function ProductTable({ products, children }: { products: IProduct[], chi
                     </TableColumn>
                 </TableHeader>
                 <TableBody
-                    emptyContent="No categories found"
+                    emptyContent={`No categories found or ${message && message}`}
                 >
                     {
                         products && products.map((product) => {

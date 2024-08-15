@@ -5,27 +5,71 @@ import { Input, SelectItem, Select, Image, Button } from "@nextui-org/react";
 import { useRouter } from "next/navigation";
 import { ChangeEvent } from "react";
 import { useState } from "react";
+import { createProduct } from "../actions/create-product";
+import { toast } from "sonner";
+import { log } from "console";
+import { ValidationFailed } from "../types/create-product-response";
 
 export function CreateProduct({ categories }: { categories: ICategory[] }) {
     const router = useRouter();
     const [isLoading, setIsLoading] = useState(false);
     const [previewImage, setPreviewImage] = useState<string>("");
+    const [errorsFound, setErrorsFound] = useState<ValidationFailed>({
+        errors: {},
+        message: "",
+        status: 0
+    })
 
     const handleFile = (e: ChangeEvent<HTMLInputElement>) => {
-        console.log(e.target.files![0])
         const image = e.target.files![0]
         const preview = URL.createObjectURL(image);
         setPreviewImage(preview);
     }
 
-    function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
+    async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
         event.preventDefault();
+        setIsLoading(true)
+        const { productName, productDescription, productCategory, productStock, productPrice, image } = event.target as HTMLFormElement
+        const formData = new FormData();
+
+        if (productName.value.trim() === '' || productDescription.value.trim() === ''
+            || !image.files
+            || productCategory.value.trim() === ''
+            || productStock.value.trim() === '') {
+            setIsLoading(false)
+            toast.error('All fields are required')
+            return
+        }
+
+        formData.append('productName', productName.value)
+        formData.append('productDescription', productDescription.value)
+        formData.append('productCategory', productCategory.value)
+        formData.append('productStock', productStock.value)
+        formData.append('productPrice', productPrice.value)
+        formData.append('image', image.files[0])
+
+        const { data, error, errors } = await createProduct(formData)
+
+
+        if (error) {
+            if (errors) {
+                setErrorsFound(errors as ValidationFailed)
+            }
+            toast.error(error)
+            setIsLoading(false)
+            return
+        }
+
+        toast.success(`${data?.message} with name ${data?.product.name}`)
+        setIsLoading(false)
+        router.push('/admin/products')
+
     }
 
 
     return (
         <section className="pt-8 pb-8">
-            <form onSubmit={handleSubmit} className="container">
+            <form onSubmit={handleSubmit} className="container rounded-lg p-8 backdrop-blur-sm bg-stone-950/90">
                 <div className={`h-full ${previewImage !== '' ? 'flex gap-5' : ''}`}>
                     <div className="flex-1">
                         {
@@ -47,6 +91,13 @@ export function CreateProduct({ categories }: { categories: ICategory[] }) {
                             label="Name"
                             placeholder="Enter product name"
                             type="text"
+                            variant="bordered"
+                            isInvalid={errorsFound.message != "" && errorsFound.errors && errorsFound.errors.name != null}
+                            errorMessage={
+                                errorsFound.message != "" && errorsFound.errors && errorsFound.errors.name && (
+                                    errorsFound.errors.name.join(", ")
+                                )
+                            }
                         />
 
                         <Input
@@ -55,6 +106,13 @@ export function CreateProduct({ categories }: { categories: ICategory[] }) {
                             label="Description"
                             placeholder="Enter product description"
                             type="text"
+                            variant="bordered"
+                            isInvalid={errorsFound.message != "" && errorsFound.errors && errorsFound.errors.description != null}
+                            errorMessage={
+                                errorsFound.message != "" && errorsFound.errors && errorsFound.errors.description && (
+                                    errorsFound.errors.description.join(", ")
+                                )
+                            }
                         />
 
                         <Select
@@ -64,6 +122,13 @@ export function CreateProduct({ categories }: { categories: ICategory[] }) {
                             placeholder="Select a category"
                             disableSelectorIconRotation
                             selectorIcon={<SelectorIcon />}
+                            variant="bordered"
+                            isInvalid={errorsFound.message != "" && errorsFound.errors && errorsFound.errors.category_id != null}
+                            errorMessage={
+                                errorsFound.message != "" && errorsFound.errors && errorsFound.errors.category_id && (
+                                    errorsFound.errors.category_id.join(", ")
+                                )
+                            }
                         >
                             {categories.map((category) => (
                                 <SelectItem key={category.id} value={category.id}>
@@ -78,6 +143,13 @@ export function CreateProduct({ categories }: { categories: ICategory[] }) {
                             label="Stock"
                             placeholder="Enter product stock"
                             type="number"
+                            variant="bordered"
+                            isInvalid={errorsFound.message != "" && errorsFound.errors && errorsFound.errors.stock != null}
+                            errorMessage={
+                                errorsFound.message != "" && errorsFound.errors && errorsFound.errors.stock && (
+                                    errorsFound.errors.stock.join(", ")
+                                )
+                            }
                         />
 
                         <Input
@@ -86,6 +158,13 @@ export function CreateProduct({ categories }: { categories: ICategory[] }) {
                             label="Price"
                             placeholder="Enter product price"
                             type="number"
+                            variant="bordered"
+                            isInvalid={errorsFound.message != "" && errorsFound.errors && errorsFound.errors.price != null}
+                            errorMessage={
+                                errorsFound.message != "" && errorsFound.errors && errorsFound.errors.price && (
+                                    errorsFound.errors.price.join(", ")
+                                )
+                            }
                         />
 
                         <input
@@ -94,6 +173,7 @@ export function CreateProduct({ categories }: { categories: ICategory[] }) {
                             type="file"
                             name='image'
                             id="image"
+
                         />
 
                         <div className='flex gap-5'>
@@ -104,13 +184,13 @@ export function CreateProduct({ categories }: { categories: ICategory[] }) {
                                 isLoading={isLoading}
                                 fullWidth
                             >
-                                Create Category
+                                Create Product
                             </Button>
                             <Button
                                 color='danger'
                                 variant='shadow'
                                 onPress={() => {
-                                    router.push('/admin/categories')
+                                    router.push('/admin/products')
                                 }}
                                 fullWidth
                             >

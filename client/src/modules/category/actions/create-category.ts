@@ -12,16 +12,21 @@ export async function createCategory(category: { name: string, description: stri
             error: null
         }
     } catch (error: any) {
-        console.log(error);
-
         if (isAxiosError(error)) {
             return {
                 data: null,
                 error: error.response?.data.message,
+                errors: error.response?.data as {
+                    message: string
+                }
             }
         }
-
-        throw new Error("Error en el servidor")
+        else {
+            return {
+                data: null,
+                error: error.message
+            }
+        }
     }
 
 }

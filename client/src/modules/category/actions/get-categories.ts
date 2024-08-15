@@ -2,13 +2,30 @@
 
 import axiosInstance from "@/store/axios-store"
 import { ICategoryesResponse } from "../types/get-categories-reponse";
+import { isAxiosError } from "axios";
 
-export async function getCategories(): Promise<ICategoryesResponse | undefined> {
+export async function getCategories() {
     try {
         const { data } = await axiosInstance.get<ICategoryesResponse>("/categories");
-        return data;
+        return {
+            data,
+            error: null
+        };
     } catch (error: any) {
-        console.log(error);
-        throw Error(error.response.data.message ?? "Error en el servidor")
+        if (isAxiosError(error)) {
+            return {
+                data: null,
+                error: error.response?.data.message,
+                errors: error.response?.data as {
+                    message: string
+                }
+            }
+        }
+        else {
+            return {
+                data: null,
+                error: error.message
+            }
+        }
     }
 }

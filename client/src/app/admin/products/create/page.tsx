@@ -5,7 +5,7 @@ import React from 'react'
 
 export default async function CreateProductPage() {
     const res = await getCategories()
-    const categories = res?.categories as ICategory[]
+    const categories = res?.data?.categories as ICategory[]
     return (
         <>
             <HeaderPage

@@ -10,17 +10,22 @@ export async function getCategory(id: string) {
             data,
             error: null
         }
-    } catch (error) {
-        console.error(error);
-
+    } catch (error: any) {
         if (isAxiosError(error)) {
             return {
                 data: null,
-                error: error.response?.data.message
+                error: error.response?.data.message,
+                errors: error.response?.data as {
+                    message: string
+                }
             }
         }
-
-        throw new Error("Error en el servidor");
+        else {
+            return {
+                data: null,
+                error: error.message
+            }
+        }
 
     }
 }

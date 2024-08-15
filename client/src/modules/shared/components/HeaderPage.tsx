@@ -11,9 +11,10 @@ interface Props {
     description: string;
     btnTitle: string;
     pathName: string;
+    unauthenticatedMessage?: string;
 }
 
-export function HeaderPage({ title, description, btnTitle, pathName }: Props) {
+export function HeaderPage({ title, description, btnTitle, pathName, unauthenticatedMessage }: Props) {
     const router = useRouter();
     return (
         <section className="container mt-8 set-image-bg rounded-xl overflow-hidden">
@@ -33,6 +34,7 @@ export function HeaderPage({ title, description, btnTitle, pathName }: Props) {
                     onPress={() => {
                         router.push(pathName)
                     }}
+                    isDisabled={unauthenticatedMessage?.includes("Unauthenticated")}
                 >
                     {btnTitle.toLowerCase().includes('back') ? (
                         <ArrowLeft01Icon />
