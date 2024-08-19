@@ -34,7 +34,7 @@ export function HeaderPage({ title, description, btnTitle, pathName, unauthentic
                     onPress={() => {
                         router.push(pathName)
                     }}
-                    isDisabled={unauthenticatedMessage?.includes("Unauthenticated")}
+                    isDisabled={unauthenticatedMessage?.includes("Unauthenticated") || unauthenticatedMessage === "You need to login to view this page"}
                 >
                     {btnTitle.toLowerCase().includes('back') ? (
                         <ArrowLeft01Icon />

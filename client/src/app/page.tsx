@@ -1,8 +1,14 @@
-import { LoginForm } from "@/modules/auth";
 import { redirect } from "next/navigation";
-import Image from "next/image";
+import { loadCookie } from "@/utils/cookiesLoader";
 
 export default function Home() {
-  // return redirect("/auth/login");
+  const token = loadCookie("INV_NEXT_TOKEN");
+  const user = loadCookie("INV_NEXT_USER");
+  if (!token || !user) {
+    return redirect("/auth/login");
+
+  }
+
   return redirect("/admin/categories");
+
 }

@@ -76,4 +76,15 @@ class AuthController extends Controller
         ], 200);
 
     }
+
+    public function getUser(Request $request)
+    {
+        $user = $request->user();
+
+        return response()->json([
+            "message" => "User fetched successfully",
+            "user" => new UserResouce($user),
+            "status" => 200
+        ], 200);
+    }
 }

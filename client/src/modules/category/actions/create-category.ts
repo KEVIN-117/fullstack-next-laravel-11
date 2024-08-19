@@ -3,9 +3,17 @@ import axiosInstance from "@/store/axios-store";
 import { isAxiosError } from "axios";
 import { ICreateCategoryResponse } from "../types/create";
 import { revalidatePath } from "next/cache";
+import { loadCookie } from "@/utils/cookiesLoader";
 export async function createCategory(category: { name: string, description: string }) {
     try {
-        const { data } = await axiosInstance.post<ICreateCategoryResponse>("/categories", category);
+        const token = await loadCookie("INV_NEXT_TOKEN");
+        const { data } = await axiosInstance.post<ICreateCategoryResponse>("/categories", category, {
+            headers: {
+                'Content-Type': 'application/json',
+                Accept: 'application/json',
+                Authorization: `Bearer ${token}`
+            }
+        });
         revalidatePath("/admin/categories");
         return {
             data,

@@ -5,9 +5,11 @@ import { isAxiosError } from "axios"
 import { CreateProductResponse, ValidationFailed } from "../types/create-product-response"
 import { uploadImageFromBuffer } from "../utils/imageUploader"
 import { Iimage } from "../types/image"
+import { loadCookie } from "@/utils/cookiesLoader"
 
 export async function createProduct(formData: FormData) {
     try {
+        const token = await loadCookie("INV_NEXT_TOKEN")
         const productName = formData.get("productName") as string
         const productDescription = formData.get("productDescription") as string
         const productCategory = formData.get("productCategory") as string
@@ -23,6 +25,12 @@ export async function createProduct(formData: FormData) {
             stock: productStock,
             price: productPrice,
             image: imageURL.secure_url,
+        }, {
+            headers: {
+                'Content-Type': 'application/json',
+                Accept: 'application/json',
+                Authorization: `Bearer ${token}`
+            }
         })
 
 

@@ -38,5 +38,6 @@ Route::middleware(["auth:sanctum"])->group(function () {
         Route::post('/auth/register', 'register');
         Route::post('/auth/logout', 'logout');
         Route::get('/auth/checkToken', 'checkToken');
+        Route::get('/auth/getUser', 'getUser');
     });
 });

@@ -2,10 +2,18 @@
 import axios from "@/store/axios-store";
 import { isAxiosError } from "axios";
 import { ICategoryResponse } from "@/modules/category";
+import { loadCookie } from "@/utils/cookiesLoader";
 
 export async function getCategory(id: string) {
     try {
-        const { data } = await axios.get<ICategoryResponse>(`/categories/${id}`);
+        const token = await loadCookie("INV_NEXT_TOKEN");
+        const { data } = await axios.get<ICategoryResponse>(`/categories/${id}`, {
+            headers: {
+                'Content-Type': 'application/json',
+                Accept: 'application/json',
+                Authorization: `Bearer ${token}`
+            }
+        });
         return {
             data,
             error: null

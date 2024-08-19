@@ -5,7 +5,9 @@ export default async function CategoriesPage() {
 
     const { data, errors } = await getCategories();
     const categories = data?.categories as ICategory[];
-    const message = errors?.message as string
+    const message = errors?.message as string;
+    console.log(message);
+
     return (
         <div>
             <HeaderPage title="Categories"

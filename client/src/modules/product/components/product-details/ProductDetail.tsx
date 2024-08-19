@@ -6,13 +6,14 @@ import { HeartAddIcon, ShoppingCartAdd01Icon } from "hugeicons-react";
 
 
 export function ProductDetail({ product }: { product: IProduct }) {
+    console.log(product);
 
     return (
         <div className="container flex mt-5">
             <section className="w-[90%] px-4 mx-auto">
                 <div className="grid grid-cols-1 md:grid-cols-2 place-items-center">
                     <Image
-                        
+
                         className="w-[70%] mx-auto shadow-xl rounded-xl object-cover shadow-indigo-900"
                         src={product.image}
                         alt={product.name}
