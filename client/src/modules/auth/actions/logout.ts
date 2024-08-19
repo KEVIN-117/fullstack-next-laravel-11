@@ -9,6 +9,8 @@ import { redirect } from "next/navigation";
 export async function logout() {
     try {
         const token = await loadCookie("INV_NEXT_TOKEN");
+        await deleteCookie("INV_NEXT_TOKEN")
+        await deleteCookie("INV_NEXT_USER")
         await axiosInstance.post("/auth/logout", {
             headers: {
                 'Content-Type': 'application/json',
@@ -16,8 +18,9 @@ export async function logout() {
                 Authorization: `Bearer ${token}`
             }
         })
-        deleteCookie("INV_NEXT_TOKEN")
-        deleteCookie("INV_NEXT_USER")
+        revalidatePath("/")
+        redirect("/auth/login")
+
     } catch (error: any) {
         if (isAxiosError(error)) {
             return {
@@ -35,6 +38,5 @@ export async function logout() {
             }
         }
     }
-    revalidatePath("/")
-    redirect("/auth/login")
+
 }

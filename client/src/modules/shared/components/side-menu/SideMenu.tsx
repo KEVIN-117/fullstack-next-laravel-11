@@ -4,8 +4,6 @@ import { SideMenuOption } from "./SideMenuOption";
 import { SideMenuAvatar } from "./SideMenuAvatar";
 import { IUser } from "@/modules/auth";
 export function SideMenu({ user }: { user: IUser }) {
-
-
     return (
         <nav className="sidemenu">
             <div className="sidemenu__logo">

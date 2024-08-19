@@ -8,10 +8,11 @@ interface IProps {
 }
 export default async function ProviderName({ children }: IProps) {
     const LoadUser = await loadCookie("INV_NEXT_USER");
-    const user = JSON.parse(LoadUser as string) as IUser
     if (!LoadUser) {
         return redirect("/auth/login");
     }
+    const user = JSON.parse(LoadUser as string) as IUser
+
     return (
         <main className="dashboard set-image-bg2">
             <SideMenu user={user} />
