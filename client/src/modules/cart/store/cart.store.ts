@@ -72,10 +72,10 @@ const storeApi: StateCreator<CardState & Methods> = (set, get) => ({
         const { cart, calculateTotal } = get()
 
         const update = cart.map(item => {
-            if (item.quantity === 1) return item
-
+            if (item.quantity === 1) {
+                return item
+            }
             if (item.id === id) {
-
                 return {
                     ...item,
                     quantity: item.quantity - 1
@@ -93,10 +93,7 @@ const storeApi: StateCreator<CardState & Methods> = (set, get) => ({
     },
     increment: (id: string) => {
         const { cart, calculateTotal } = get()
-        console.log(id);
         const update = cart.map(item => {
-            if (item.quantity === 1) return item
-
             if (item.id === id) {
                 return {
                     ...item,

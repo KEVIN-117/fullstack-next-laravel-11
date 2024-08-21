@@ -1,7 +1,12 @@
-import { ChartIcon, Home01Icon, Layers01Icon, ShoppingCart01Icon } from "hugeicons-react";
+import { ChartIcon, ChartRelationshipIcon, Home01Icon, Layers01Icon, ShoppingCart01Icon } from "hugeicons-react";
 
 
 export const sideMenuOptions = [
+    {
+        path: "/admin/dashboard",
+        name: "E-commerce",
+        icon: <ChartRelationshipIcon />
+    },
     {
         path: "/admin/products",
         name: "Productos",

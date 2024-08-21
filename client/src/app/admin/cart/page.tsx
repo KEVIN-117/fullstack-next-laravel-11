@@ -1,6 +1,5 @@
 import { CartProductList } from '@/modules/cart'
 import { HeaderPage } from '@/modules/shared'
-import React from 'react'
 
 export default function CardPage() {
     return (

@@ -1,6 +1,7 @@
 "use client";
 import { IUser, logout } from "@/modules/auth";
 import { Button, Image } from "@nextui-org/react";
+import { ChartAverageIcon, AiCloud02Icon } from "hugeicons-react";
 import Link from "next/link";
 
 export function SideMenuAvatar({ user }: { user: IUser }) {
@@ -11,12 +12,8 @@ export function SideMenuAvatar({ user }: { user: IUser }) {
 
     return (
         <div className="mt-auto rounded-xl overflow-hidden bg-gradient-to-br from-primary-600 via-indigo-700 to-secondary-200">
-            <div className="flex flex-col justify-center items-center w-full backdrop-blur-md bg-slate-800/50 p-10">
-                <Image
-                    src="/images/logo.png"
-                    className="rounded-full"
-                    alt="User"
-                />
+            <div className="flex flex-col justify-center items-center w-full backdrop-blur-md bg-slate-800/50 p-2">
+                < AiCloud02Icon size={100} />
                 {!user && <>
 
                     <Button

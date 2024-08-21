@@ -18,7 +18,7 @@ export function SideMenu({ user }: { user: IUser }) {
                 </p>
             </div>
 
-            <ul className="space-y-6">
+            <ul className="space-y-6 flex-1">
                 {
                     sideMenuOptions.map(({ path, icon, name }, index) => {
                         return (

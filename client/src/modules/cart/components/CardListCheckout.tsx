@@ -8,9 +8,17 @@ export function CardListCheckout() {
 
     return (
         <div className="col-span-2">
+            {
+                cart.length === 0 && (
+                    <div className="text-center flex flex-col bg-stone-900 px-3 py-4 gap-4 items-center rounded-lg">
+                        <h2 className="text-2xl font-bold">Carrito de compras</h2>
+                        <p>No hay productos en el carrito</p>
+                    </div>
+                )
+            }
             <ul className="space-y-6">
                 {
-                    cart.map(({ id, image, name, price, quantity }) => {
+                    cart.length > 0 && cart.map(({ id, image, name, price, quantity }) => {
                         return (
                             <li key={id} className="cart__item">
                                 <img

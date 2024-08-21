@@ -8,7 +8,7 @@ import { ICart } from "@/modules/cart"
 import { IDetailsSales } from "../types/IDetailsSales"
 
 export async function createSale(formData: FormData) {
-    const card = JSON.parse(formData.get('card') as string) as ICart[]
+    const card = JSON.parse(formData.get('cart') as string) as ICart[]
 
     const details: IDetailsSales[] = card.map((item) => {
         return {
@@ -25,12 +25,13 @@ export async function createSale(formData: FormData) {
         userName: formData.get("userName"),
         userEmail: formData.get("userEmail"),
         user_id: formData.get("user_id"),
-        total: formData.get("total"),
+        total: Math.round(Number(formData.get("total"))),
         details
     }
 
     try {
         const token = await loadCookie("INV_NEXT_TOKEN")
+
         const { data } = await axiosInstance.post<ICreateSaleResponse>('/sales', sale, {
             headers: {
                 'Content-Type': 'application/json',

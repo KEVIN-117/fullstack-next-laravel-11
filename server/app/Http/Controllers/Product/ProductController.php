@@ -19,7 +19,7 @@ class ProductController extends Controller
     {
         $products = Product::paginate(8);
 
-        if (empty($products)){
+        if (empty($products)) {
             return response()->json([
                 "message" => "There are no registered products",
                 "status" => 200
@@ -27,6 +27,24 @@ class ProductController extends Controller
         }
 
         return new ProductCollection($products);
+    }
+
+    public function all()
+    {
+        $products = Product::all();
+
+        if (empty($products)) {
+            return response()->json([
+                "message" => "There are no registered products",
+                "status" => 200
+            ], 200);
+        }
+
+        return response()->json([
+            "products" => new ProductCollection($products),
+            "message" => "All products",
+            "status" => 200
+        ], 200);
     }
 
     /**
@@ -45,7 +63,7 @@ class ProductController extends Controller
             'image' => 'string'
         ]);
 
-        if($validator->fails()){
+        if ($validator->fails()) {
             return response()->json([
                 "message" => "Validation failed",
                 "errors" => $validator->errors(),
@@ -55,7 +73,7 @@ class ProductController extends Controller
 
         $product = Product::create($request->all());
 
-        if(!$product){
+        if (!$product) {
             return response()->json([
                 "message" => "Error creating product",
                 "status" => 500
@@ -89,14 +107,14 @@ class ProductController extends Controller
     {
         $product = Product::find($id);
 
-        if(!$product){
+        if (!$product) {
             return response()->json([
                 "message" => "Product not found",
                 "status" => 404
             ], 404);
         }
 
-        if($request->name){
+        if ($request->name) {
             $product->slug = $this->createSlug($request->name);
         }
 
@@ -117,7 +135,7 @@ class ProductController extends Controller
         //
         $product = Product::find($id);
 
-        if(!$product){
+        if (!$product) {
             return response()->json([
                 "message" => "Product not found",
                 "status" => 404

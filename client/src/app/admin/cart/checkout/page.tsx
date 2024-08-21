@@ -16,9 +16,13 @@ export default async function CheckoutPage() {
                 pathName="/admin/cart"
             />
 
-            <section className="checkout">
-                <CardListCheckout />
-                <CheckoutForm user={user} />
+
+
+            <section className='py-8'>
+                <div className="container checkout rounded-lg p-8 backdrop-blur-sm bg-stone-950/90">
+                    <CardListCheckout />
+                    <CheckoutForm user={user} />
+                </div>
             </section>
         </>
     )
