@@ -6,9 +6,7 @@ export default async function Home() {
   const user = await loadCookie("INV_NEXT_USER");
   if (!token || !user) {
     return redirect("/auth/login");
-
   }
-
-  return redirect("/admin/categories");
+  return redirect("/admin/dashboard");
 
 }
