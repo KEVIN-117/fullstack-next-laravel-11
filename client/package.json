@@ -9,8 +9,12 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@headlessui/react": "^2.1.2",
+    "@headlessui/tailwindcss": "^0.2.1",
     "@nextui-org/react": "^2.4.6",
     "@nextui-org/select": "^2.2.5",
+    "@remixicon/react": "^4.2.0",
+    "@tremor/react": "^3.17.4",
     "axios": "^1.7.3",
     "bcrypt": "^5.1.1",
     "cloudinary": "^2.4.0",
@@ -23,6 +27,7 @@
     "zustand": "^4.5.5"
   },
   "devDependencies": {
+    "@tailwindcss/forms": "^0.5.7",
     "@types/bcrypt": "^5.0.2",
     "@types/node": "^20",
     "@types/react": "^18",

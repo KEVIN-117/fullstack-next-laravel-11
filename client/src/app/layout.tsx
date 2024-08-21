@@ -16,7 +16,7 @@ interface Props {
 export default function RootLayout({ children }: Props) {
   return (
     <html lang="es">
-      <body className={inter.className}>
+      <body className={`${inter.className} dark`}>
         <Providers>
           {children}
         </Providers>
