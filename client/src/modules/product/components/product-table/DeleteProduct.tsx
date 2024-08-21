@@ -1,25 +1,25 @@
 "use client"
 import { Button, Modal, ModalBody, ModalContent, ModalFooter, ModalHeader, Tooltip, useDisclosure } from '@nextui-org/react'
 import { DeleteIcon } from "@/assets/icons";
-import { useState } from 'react'
-import { deleteCAtegory } from '../../actions/delete-category';
+import React, { useState } from 'react';
+import { deleteProduct } from '@/modules/product';
+
 import { toast } from 'sonner';
 
-export function DeleteCategoryModal({ id, name }: { id: string, name: string }) {
-    const [isDisabled, setIsDisabled] = useState(false)
+export function DeleteProduct({ id, name }: { id: string, name: string }) {
+    const [isDisable, setIsDisable] = useState(false)
     const { isOpen, onOpen, onOpenChange, onClose } = useDisclosure()
-    async function handleDeleteCategory() {
-        setIsDisabled(true)
-
-        const { data, error } = await deleteCAtegory(id)
+    async function handleDelete() {
+        setIsDisable(true)
+        const { data, error } = await deleteProduct(id)
         if (error) {
-            setIsDisabled(false)
+            setIsDisable(false)
             toast.error(error)
             return
         }
 
         toast.success(data?.message)
-        setIsDisabled(false)
+        setIsDisable(false)
         onClose()
     }
     return (
@@ -31,31 +31,35 @@ export function DeleteCategoryModal({ id, name }: { id: string, name: string }) 
                     <DeleteIcon />
                 </span>
             </Tooltip>
-            <Modal isOpen={isOpen} onOpenChange={onOpenChange} >
+            <Modal
+                isOpen={isOpen}
+                onOpenChange={onOpenChange}
+            >
                 <ModalContent>
                     {(onClose) => (
                         <>
-                            <ModalHeader className="flex flex-col gap-1">
-                                Delete Category
+                            <ModalHeader
+                                className='flex flex-col gap-1'
+                            >
+                                Delete Product
                             </ModalHeader>
                             <ModalBody>
                                 <p>
-                                    Are you sure you want to delete this category {name}?
+                                    Are you sure you want to delete this product {name}?
                                 </p>
                             </ModalBody>
                             <ModalFooter>
                                 <Button
                                     color="danger"
                                     variant="shadow"
-                                    onPress={onClose}
-                                >
+                                    onPress={onClose}>
                                     Cancel
                                 </Button>
                                 <Button
-                                    isLoading={isDisabled}
+                                    isLoading={isDisable}
                                     color="primary"
                                     variant='shadow'
-                                    onPress={handleDeleteCategory}
+                                    onPress={handleDelete}
                                 >
                                     Delete
                                 </Button>
@@ -63,7 +67,8 @@ export function DeleteCategoryModal({ id, name }: { id: string, name: string }) 
                         </>
                     )}
                 </ModalContent>
+
             </Modal>
         </>
-    )
+    );
 }

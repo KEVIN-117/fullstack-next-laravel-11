@@ -22,11 +22,11 @@
   }
 
   .dashboard {
-    @apply flex h-screen relative;
+    @apply flex md:flex-row flex-col md:h-screen relative;
   }
 
   .sidemenu {
-    @apply sticky h-screen flex flex-col -left-[100%] md:relative md:left-0 backdrop-blur-sm bg-stone-950/90 max-w-72 w-full py-10 px-8;
+    @apply h-screen flex flex-col -left-[100%] md:relative md:left-0 backdrop-blur-sm bg-stone-950/90 max-w-72 w-full py-10 px-8;
   }
 
   .sidemenu__logo {
@@ -78,7 +78,7 @@
   }
 
   .product__card {
-    @apply bg-stone-900 max-w-[250px] p-4 rounded-md;
+    @apply bg-stone-900 max-w-[250px] p-4 rounded-md flex flex-col gap-4;
   }
 
   .cart__item {

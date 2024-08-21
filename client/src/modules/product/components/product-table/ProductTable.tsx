@@ -1,13 +1,19 @@
 "use client";
-import { DeleteIcon, EditIcon, EyeIcon } from "@/assets/icons";
+import { EditIcon, EyeIcon } from "@/assets/icons";
 import { IProduct } from "@/modules/product";
 import { currencyFormatter } from "@/utils/currencyFormatter";
 import { formatterDate } from "@/utils/timeFormatter";
 import { Button, Table, TableBody, TableCell, TableColumn, TableHeader, TableRow, Tooltip } from "@nextui-org/react";
 import Link from "next/link";
 import React from "react";
+import { DeleteProduct } from "./DeleteProduct";
+import { Add01Icon, ShoppingCartAdd01Icon } from "hugeicons-react";
+import { useCartStore } from "@/modules/cart";
 
-export function ProductTable({ products, children, message }: { products: IProduct[], children: React.ReactNode, message?:string }) {
+
+
+export function ProductTable({ products, children, message }: { products: IProduct[], children: React.ReactNode, message?: string }) {
+    const { addToCart } = useCartStore();
     return (
         <div className="pt-8">
             <Table
@@ -79,9 +85,12 @@ export function ProductTable({ products, children, message }: { products: IProdu
                                                     <EditIcon />
                                                 </span>
                                             </Tooltip>
-                                            <Tooltip color="danger" content="Delete">
-                                                <span className="text-lg text-danger cursor-pointer active:opacity-50">
-                                                    <DeleteIcon />
+                                            <DeleteProduct id={id} name={name} />
+                                            <Tooltip color="success" content="Buy">
+                                                <span
+                                                    onClick={() => addToCart(product)}
+                                                    className="text-lg text-success cursor-pointer active:opacity-50">
+                                                    <ShoppingCartAdd01Icon size={18} />
                                                 </span>
                                             </Tooltip>
                                         </div>

@@ -9,32 +9,29 @@ export function ProductDetail({ product }: { product: IProduct }) {
     console.log(product);
 
     return (
-        <div className="container flex mt-5">
-            <section className="w-[90%] px-4 mx-auto">
-                <div className="grid grid-cols-1 md:grid-cols-2 place-items-center">
+        <div className="pt-8 pb-8">
+            <section className="container rounded-lg p-8 backdrop-blur-sm bg-stone-950/90">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-10 place-content-stretch">
                     <Image
 
-                        className="w-[70%] mx-auto shadow-xl rounded-xl object-cover shadow-indigo-900"
+                        className="w-[100%] mx-auto shadow-xl rounded-xl object-scale-down shadow-indigo-900"
                         src={product.image}
                         alt={product.name}
                     />
-                    <div className="set-image-bg rounded-xl overflow-hidden">
-                        <div className="flex w-full h-full flex-col gap-4 justify-between md:items-center p-5 backdrop-blur-sm bg-slate-800/80 space-y-10">
-                            <div className="flex justify-between items-center bg-slate-950/50 w-full p-2 rounded-lg">
-                                <h2 className="text-2xl font-extrabold text-primary-100 sm:text-3xl">
-                                    Product Name: {' '}
-                                </h2>
-                                <p className="mt-2 text-sm font-medium text-primary-200">
+                    <div className={`rounded-xl`}
+                        style={{ backgroundImage: `url(${product.image})` }}
+                    >
+                        <div className="rounded-xl flex w-full h-full flex-col gap-4 justify-between md:items-center p-5 backdrop-blur-xl bg-stone-950/90 space-y-10">
+                            <div className="flex justify-center items-center bg-slate-950/50 w-full p-2 rounded-lg">
+                                <h2 className="text-center text-xl font-extrabold text-primary-100 sm:text-3xl">
                                     {product.name}
-                                </p>
-                            </div>
-                            <div className="flex justify-between items-center bg-slate-950/50 w-full p-2 rounded-lg">
-                                <h2 className="text-2xl font-extrabold text-primary-100 sm:text-3xl">
-                                    Product Price:{' '}
                                 </h2>
-                                <p className="text-2xl font-medium text-primary-200">
+
+                            </div>
+                            <div className="flex justify-center items-center bg-slate-950/50 w-full p-2 rounded-lg">
+                                <h2 className="text-center text-xl font-extrabold text-primary-100 sm:text-3xl">
                                     {currencyFormatter(product.price)}
-                                </p>
+                                </h2>
                             </div>
                             <div className="flex justify-between items-center gap-2 mt-2 sm:mt-0 bg-slate-950/50 w-full p-10 rounded-lg">
                                 <div className="flex items-center gap-1">

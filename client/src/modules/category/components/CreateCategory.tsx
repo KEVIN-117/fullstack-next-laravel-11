@@ -38,38 +38,40 @@ export function CreateCategory() {
 
 
     return (
-        <section className='pt-8'>
-            <form onSubmit={handleSubmit} className='container space-y-4'>
-                <Input
-                    isRequired
-                    name='categoryName'
-                    label='Name'
-                    placeholder='Enter category name'
-                />
-                <Input
-                    isRequired
-                    name='categoryDescription'
-                    label='Description'
-                    placeholder='Enter category description'
-                />
-                <div className='flex gap-5'>
-                    <Button
-                        type='submit'
-                        color='primary'
-                        variant='shadow'
-                        isLoading={isLoading}
-                    >
-                        Create Category
-                    </Button>
-                    <Button
-                        color='danger'
-                        variant='shadow'
-                        onPress={() => {
-                            router.push('/admin/categories')
-                        }}
-                    >
-                        Cancel
-                    </Button>
+        <section className="pt-8 pb-8">
+            <form onSubmit={handleSubmit} className="container rounded-lg p-8 backdrop-blur-sm bg-stone-950/90">
+                <div className="flex-1 flex flex-col justify-between space-y-4">
+                    <Input
+                        isRequired
+                        name='categoryName'
+                        label='Name'
+                        placeholder='Enter category name'
+                    />
+                    <Input
+                        isRequired
+                        name='categoryDescription'
+                        label='Description'
+                        placeholder='Enter category description'
+                    />
+                    <div className='flex gap-5'>
+                        <Button
+                            type='submit'
+                            color='primary'
+                            variant='shadow'
+                            isLoading={isLoading}
+                        >
+                            Create Category
+                        </Button>
+                        <Button
+                            color='danger'
+                            variant='shadow'
+                            onPress={() => {
+                                router.push('/admin/categories')
+                            }}
+                        >
+                            Cancel
+                        </Button>
+                    </div>
                 </div>
             </form>
         </section>
