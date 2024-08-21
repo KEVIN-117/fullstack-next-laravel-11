@@ -41,7 +41,7 @@ export function LoginForm() {
 
         toast.success(`Welcome back ${data?.user.name}`)
         setIsLoading(false)
-        route.push('/admin/categories')
+        route.push('/admin/dashboard')
     }
 
     return (
