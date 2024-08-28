@@ -1,7 +1,13 @@
+import { ISale } from '@/modules/sale';
+import { getSales } from '@/modules/sale/actions/get-sales';
+import { SaleTable } from '@/modules/sale/components/SaleTable'
 import { HeaderPage } from '@/modules/shared'
 import React from 'react'
 
-function SalesPage() {
+export default async function SalesPage() {
+    const res = await getSales();
+    const { data } = res;
+    const sales = data?.sales as ISale[];
     return (
         <div>
             <HeaderPage
@@ -10,8 +16,8 @@ function SalesPage() {
                 description="Welcome to the sales dashboard List"
                 pathName="/admin/sales/create"
             />
+
+            <SaleTable sales={sales} />
         </div>
     )
 }
-
-export default SalesPage

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Auth\AuthController;
+use App\Http\Controllers\Chart\ChartController;
 use App\Http\Controllers\Sale\SaleController;
 use Illuminate\Support\Facades\Route;
 
@@ -30,6 +31,9 @@ Route::middleware(["auth:sanctum"])->group(function () {
     Route::get('/products/{id}', [ProductController::class, 'show']);
     Route::patch('/products/{id}', [ProductController::class, 'update']);
     Route::delete('/products/{id}', [ProductController::class, 'destroy']);
+
+    Route::get('/sales/chart/salesByCategories', [ChartController::class, 'salesByCategories']);
+    Route::get('/sales/chart/inventoryData', [ChartController::class, 'inventoryData']);
 
 
     Route::apiResource("sales", SaleController::class)

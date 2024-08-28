@@ -4,7 +4,7 @@ export { UpdateCategory } from "@/modules/category/components/UpdateCategory";
 export { DeleteCategoryModal } from "@/modules/category/components/category-table/DeleteCategoryModal";
 
 export type { ICategory } from "@/modules/category/types/category";
-export type { ICategoryesResponse, ICategoryResponse } from "@/modules/category/types/get-categories-reponse";
+export type { ICategoriesResponse, ICategoryResponse } from "@/modules/category/types/get-categories-response";
 export type { ICreateCategoryResponse } from "@/modules/category/types/create";
 
 

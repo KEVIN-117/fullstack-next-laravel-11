@@ -4,7 +4,6 @@
 
 @layer utilities {
   .auth__layout {
-    background-image: url("../assets//images/bg-auth.jpg");
     background-blend-mode: color;
     background-position: center;
     background-repeat: no-repeat;
@@ -70,7 +69,7 @@
   }
 
   .header {
-    @apply flex flex-col gap-4 md:flex-row justify-between md:items-center p-10 backdrop-blur-0 bg-slate-800/80;
+    @apply flex w-full h-full py-16 px-10 flex-col gap-4 md:flex-row justify-between md:items-center backdrop-blur-0 bg-slate-800/30;
   }
 
   .product__list {

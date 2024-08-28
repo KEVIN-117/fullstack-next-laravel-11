@@ -34,7 +34,7 @@ const chartdata = [
 
 export function CustomSparkArea() {
     return (
-        <Card className="mx-auto flex max-w-lg items-center justify-between px-4 py-3.5">
+        <div className="mx-auto flex w-full items-center justify-between px-4 py-3.5 backdrop-blur-sm bg-stone-950/50 p-5 rounded-xl">
             <div className="flex items-center space-x-2.5">
                 <p className="text-tremor-content-strong dark:text-dark-tremor-content-strong font-medium">APPL</p>
                 <span className="text-tremor-default text-tremor-content dark:text-dark-tremor-content">Apple Inc.</span>
@@ -52,6 +52,6 @@ export function CustomSparkArea() {
                     +1.72%
                 </span>
             </div>
-        </Card>
+        </div>
     );
 }

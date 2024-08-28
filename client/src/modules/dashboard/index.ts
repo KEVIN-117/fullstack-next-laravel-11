@@ -1,0 +1,1 @@
+export { getChatSalesByCategories } from "./actions/getSalesByCategories"

@@ -15,10 +15,10 @@ class DetailsResource extends JsonResource
     public function toArray(Request $request): array
     {
         return [
-            "productName" => $this->name,
-            "productSlug" => $this->slug,
-            "productPrice" => $this->price,
-            "productImage" => $this->image,
+            "name" => $this->name,
+            "slug" => $this->slug,
+            "price" => $this->price,
+            "image" => $this->image,
             "quantity" => $this->pivot->quantity,
             "subtotal" => floatval($this->pivot->subTotal),
         ];

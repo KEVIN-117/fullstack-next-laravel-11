@@ -133,7 +133,7 @@ const chartdata = [
 
 export function CustomScatterChart() {
     return (
-        <Card className='backdrop-blur-sm bg-stone-950/50 p-5 rounded-xl'>
+        <div className='backdrop-blur-sm bg-stone-950/50 p-5 rounded-xl'>
             <ScatterChart
                 className="h-80"
                 data={chartdata}
@@ -151,7 +151,7 @@ export function CustomScatterChart() {
                 showLegend={false}
                 onValueChange={(v) => console.log(v)}
             />
-        </Card>
+        </div>
     );
 }
 
