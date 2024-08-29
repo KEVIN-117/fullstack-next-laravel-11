@@ -1,29 +1,6 @@
 "use client";
 import { currencyFormatter } from '@/utils/currencyFormatter';
-import { Card, DonutChart, Legend, Title } from '@tremor/react';
-
-// const sales = [
-//     {
-//         name: 'New York',
-//         sales: 980,
-//     },
-//     {
-//         name: 'London',
-//         sales: 456,
-//     },
-//     {
-//         name: 'Hong Kong',
-//         sales: 390,
-//     },
-//     {
-//         name: 'San Francisco',
-//         sales: 240,
-//     },
-//     {
-//         name: 'Singapore',
-//         sales: 190,
-//     },
-// ];
+import { DonutChart, Legend, Title } from '@tremor/react';
 
 const valueFormatter = (number: number) =>
     currencyFormatter(number + '');
@@ -43,18 +20,18 @@ export function CustomDonutChart({ sales }: { sales: { name: string; sales: stri
             <Title>
                 Ventas por categorías
             </Title>
-            <div className="flex items-center justify-center space-x-6 mt-5">
+            <div className="grid md:grid-cols-2 grid-cols-1 space-x-6 mt-5">
                 <DonutChart
                     data={data}
                     category="sales"
                     index="name"
                     valueFormatter={valueFormatter}
-                    colors={['blue', 'cyan', 'indigo', 'violet', 'fuchsia']}
+
                     className="flex-1 h-72"
                 />
                 <Legend
                     categories={categories}
-                    colors={['blue', 'cyan', 'indigo', 'violet', 'fuchsia']}
+
                     className="max-w-xs"
                 />
             </div>

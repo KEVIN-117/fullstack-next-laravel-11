@@ -28,7 +28,7 @@ export default async function DashboardPage() {
                 </div>
             </section>
             <div className='grid grid-cols-1 gap-5 py-10'>
-                <div className='container grid grid-cols-2 gap-5'>
+                <div className='container grid grid-cols-1 md:grid-cols-2 gap-5'>
                     <CustomDonutChart sales={sales} />
                     <CustomBarChart inventory={inventory}/>
                 </div>
