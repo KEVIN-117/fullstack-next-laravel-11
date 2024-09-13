@@ -5,6 +5,7 @@ import { CustomDonutChart } from '@/modules/dashboard/chart/CustomDonutChart'
 import { CustomProgressBar } from '@/modules/dashboard/chart/CustomProgressBar'
 import { CustomScatterChart } from '@/modules/dashboard/chart/CustomScatterChart'
 import { CustomSparkArea } from '@/modules/dashboard/chart/CustomSparkArea'
+import { HeaderPage } from '@/modules/shared'
 import { Button } from '@nextui-org/react'
 import React from 'react'
 
@@ -15,22 +16,11 @@ export default async function DashboardPage() {
     const inventory = res.data?.inventoryData || []
     return (
         <div>
-            <section className="container mt-8 set-image-bg rounded-xl overflow-hidden">
-                <div className="header">
-                    <div>
-                        <h1 className="text-2xl font-bold">
-                            Dashboard Page
-                        </h1>
-                        <p>
-                            This is the dashboard page, view the charts below
-                        </p>
-                    </div>
-                </div>
-            </section>
+            <HeaderPage title="Dashboard Page" description="This is the dashboard page, view the charts below" pathName="/admin" btnTitle="Back to Dashboard" activeBtn={false} />
             <div className='grid grid-cols-1 gap-5 py-10'>
                 <div className='container grid grid-cols-1 md:grid-cols-2 gap-5'>
                     <CustomDonutChart sales={sales} />
-                    <CustomBarChart inventory={inventory}/>
+                    <CustomBarChart inventory={inventory} />
                 </div>
             </div>
         </div>

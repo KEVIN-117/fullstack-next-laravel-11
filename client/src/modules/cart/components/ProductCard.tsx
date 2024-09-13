@@ -40,8 +40,6 @@ export function ProductCard({ product }: Props) {
                     Add to cart
                 </Button>
             </div>
-
-
         </div>
     )
 }

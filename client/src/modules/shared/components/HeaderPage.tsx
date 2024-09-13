@@ -13,9 +13,10 @@ interface Props {
     btnTitle: string;
     pathName: string;
     unauthenticatedMessage?: string;
+    activeBtn?: boolean
 }
 
-export function HeaderPage({ title, description, btnTitle, pathName, unauthenticatedMessage }: Props) {
+export function HeaderPage({ title, description, btnTitle, pathName, unauthenticatedMessage, activeBtn = true }: Props) {
     const router = useRouter();
     return (
         <section className="container mt-8 rounded-xl overflow-hidden">
@@ -28,29 +29,31 @@ export function HeaderPage({ title, description, btnTitle, pathName, unauthentic
                 <div className="header">
                     <>
                         <div>
-                            <h1 className="text-2xl font-bold">
+                            <h1 className="text-2xl text_gradient capitalize font-bold">
                                 {title}
                             </h1>
                             <p>
                                 {description}
                             </p>
                         </div>
-                        <Button
-                            color='primary'
-                            className='btn_primary'
-                            variant='shadow'
-                            onPress={() => {
-                                router.push(pathName)
-                            }}
-                            isDisabled={unauthenticatedMessage?.includes("Unauthenticated") || unauthenticatedMessage === "You need to login to view this page"}
-                        >
-                            {btnTitle.toLowerCase().includes('back') ? (
-                                <ArrowLeft01Icon />
-                            ) : (
-                                <Add01Icon />
-                            )}
-                            {btnTitle}
-                        </Button>
+                        {activeBtn && (
+                            <Button
+                                color='primary'
+                                className='btn_primary'
+                                variant='shadow'
+                                onPress={() => {
+                                    router.push(pathName)
+                                }}
+                                isDisabled={unauthenticatedMessage?.includes("Unauthenticated") || unauthenticatedMessage === "You need to login to view this page"}
+                            >
+                                {btnTitle.toLowerCase().includes('back') ? (
+                                    <ArrowLeft01Icon />
+                                ) : (
+                                    <Add01Icon />
+                                )}
+                                {btnTitle}
+                            </Button>
+                        )}
                     </>
                 </div>
             </Vortex>

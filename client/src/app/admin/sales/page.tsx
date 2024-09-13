@@ -1,5 +1,5 @@
 import { ISale } from '@/modules/sale';
-import { getSales } from '@/modules/sale/actions/get-sales';
+import { getSales } from '@/modules/sale';
 import { SaleTable } from '@/modules/sale/components/SaleTable'
 import { HeaderPage } from '@/modules/shared'
 import React from 'react'
