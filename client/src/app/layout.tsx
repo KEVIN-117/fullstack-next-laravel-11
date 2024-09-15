@@ -1,12 +1,15 @@
 import { ReactNode } from "react";
 import type { Metadata } from "next";
 
-import { Montserrat } from "next/font/google";
+import { Inter } from 'next/font/google'
 import { Providers } from "@/modules/shared/providers/Providers";
 
 import "./globals.css";
 
-const inter = Montserrat({ subsets: ["latin"] });
+const inter = Inter({
+  subsets: ['latin'],
+  display: 'swap',
+})
 
 
 interface Props {

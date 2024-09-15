@@ -1,5 +1,4 @@
 "use client"
-
 import { useRouter } from 'next/navigation'
 import { Button } from "@nextui-org/react";
 import { Add01Icon, ArrowLeft01Icon } from 'hugeicons-react';
@@ -26,7 +25,7 @@ export function HeaderPage({ title, description, btnTitle, pathName, unauthentic
                 <div className="header">
                     <>
                         <div>
-                            <h1 className="text-2xl text_gradient capitalize font-bold">
+                            <h1 className="md:text-4xl text-base text_gradient capitalize font-extrabold">
                                 {title}
                             </h1>
                             <p>

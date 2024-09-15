@@ -208,13 +208,13 @@ export function Vortex(props: IVortexProps) {
         ctx.filter = "blur(8px) brightness(200%)";
         ctx.globalCompositeOperation = "lighter";
         ctx.drawImage(canvas, 0, 0);
-        ctx.restore();
+        //ctx.restore();
 
         ctx.save();
         ctx.filter = "blur(4px) brightness(200%)";
         ctx.globalCompositeOperation = "lighter";
         ctx.drawImage(canvas, 0, 0);
-        ctx.restore();
+        //ctx.restore();
     };
 
     const renderToScreen = (
@@ -228,14 +228,14 @@ export function Vortex(props: IVortexProps) {
     };
 
     useEffect(() => {
-        setup();
-        window.addEventListener("resize", () => {
-            const canvas = canvasRef.current;
-            const ctx = canvas?.getContext("2d");
-            if (canvas && ctx) {
-                resize(canvas, ctx);
-            }
-        });
+        // setup();
+        // window.addEventListener("resize", () => {
+        //     const canvas = canvasRef.current;
+        //     const ctx = canvas?.getContext("2d");
+        //     if (canvas && ctx) {
+        //         resize(canvas, ctx);
+        //     }
+        // });
     }, []);
 
     return (
