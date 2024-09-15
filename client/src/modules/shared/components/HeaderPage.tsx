@@ -21,10 +21,7 @@ export function HeaderPage({ title, description, btnTitle, pathName, unauthentic
     return (
         <section className="container mt-8 rounded-xl overflow-hidden">
             <Vortex
-                backgroundColor="#000000"
-                rangeY={800}
-                particleCount={500}
-                baseHue={120}
+                backgroundColor="black"
             >
                 <div className="header">
                     <>
