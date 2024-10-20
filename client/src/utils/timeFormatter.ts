@@ -1,6 +1,6 @@
 export function formatterDate(date: string) {
     // format example dia 1 of august of 2021
-    return new Date(date).toLocaleDateString('en-US', {
+    return new Date(date).toLocaleDateString('es-ES', {
         day: 'numeric',
         month: 'long',
         year: 'numeric'

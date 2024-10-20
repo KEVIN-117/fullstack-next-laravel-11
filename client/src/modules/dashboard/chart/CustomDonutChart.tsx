@@ -1,4 +1,5 @@
 "use client";
+import { Container } from '@/modules/shared/components/Container';
 import { currencyFormatter } from '@/utils/currencyFormatter';
 import { DonutChart, Legend, Title } from '@tremor/react';
 
@@ -16,7 +17,7 @@ export function CustomDonutChart({ sales }: { sales: { name: string; sales: stri
 
     const categories = data.map((sale) => sale.name);
     return (
-        <div className='backdrop-blur-sm bg-stone-950/50 p-5 rounded-xl'>
+        <Container>
             <Title>
                 Ventas por categorías
             </Title>
@@ -35,6 +36,6 @@ export function CustomDonutChart({ sales }: { sales: { name: string; sales: stri
                     className="max-w-xs"
                 />
             </div>
-        </div>
+        </Container>
     );
 }

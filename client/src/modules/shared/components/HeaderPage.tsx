@@ -18,9 +18,9 @@ interface Props {
 export function HeaderPage({ title, description, btnTitle, pathName, unauthenticatedMessage, activeBtn = true }: Props) {
     const router = useRouter();
     return (
-        <section className="container mt-8 rounded-xl overflow-hidden">
+        <section className="container mt-8 rounded-xl overflow-hidden border-2 border-indigo-900">
             <Vortex
-                backgroundColor="black"
+                backgroundColor=""
             >
                 <div className="header">
                     <>

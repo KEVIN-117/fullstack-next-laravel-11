@@ -1,6 +1,7 @@
 export function currencyFormatter(value: string): string {
-    return new Intl.NumberFormat("en-US", {
+    // format in Bs of bolivia currency
+    return new Intl.NumberFormat("es-BO", {
         style: "currency",
-        currency: "USD",
+        currency: "BOB",
     }).format(Number(value));
 }

@@ -1,4 +1,5 @@
 'use client';
+import { Container } from '@/modules/shared/components/Container';
 import { AreaChart, BarChart, Card, Title } from '@tremor/react';
 
 
@@ -15,7 +16,7 @@ export function CustomBarChart({ inventory }: { inventory: { category: string, s
         };
     });
     return (
-        <div className='backdrop-blur-sm bg-stone-950/50 p-5 rounded-xl'>
+        <Container >
             <Title>
                 Inventario por categoría
             </Title>
@@ -30,6 +31,6 @@ export function CustomBarChart({ inventory }: { inventory: { category: string, s
                 xAxisLabel="Categoría"
                 yAxisLabel="Cantidad"
             />
-        </div>
+        </Container>
     );
 }

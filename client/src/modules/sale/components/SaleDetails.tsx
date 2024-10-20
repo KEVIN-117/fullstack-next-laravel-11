@@ -3,6 +3,7 @@ import { ISale } from '../types/ISale'
 import { ProductCard } from '@/modules/cart';
 import { currencyFormatter } from '@/utils/currencyFormatter';
 import { formatterDate } from '@/utils/timeFormatter';
+import { Container } from '@/modules/shared/components/Container';
 
 export function SaleDetails({ sale }: { sale: ISale }) {
     console.log(sale);
@@ -15,8 +16,8 @@ export function SaleDetails({ sale }: { sale: ISale }) {
         )
     }
     return (
-        <div className="pt-8 pb-8">
-            <section className="container rounded-lg p-8 backdrop-blur-sm bg-stone-950/90">
+        <section className="container pt-8 pb-8 space-y-4">
+            <Container>
                 <div className="grid grid-cols-1 gap-4 mt-4">
                     <h2 className="md:text-4xl text-base font-bold uppercase text_gradient">
                         Informacion de la Venta
@@ -28,6 +29,10 @@ export function SaleDetails({ sale }: { sale: ISale }) {
                         {saleDetail({ label: 'Total de la Venta:', value: currencyFormatter(sale.total) })}
                         {saleDetail({ label: 'Fecha de la Venta:', value: formatterDate(sale.createdAt) })}
                     </div>
+                </div>
+            </Container>
+            <Container>
+                <div className="grid grid-cols-1 gap-4 mt-4">
                     <h2 className="md:text-4xl text-base font-bold uppercase text_gradient">
                         Productos de la Venta
                     </h2>
@@ -50,7 +55,7 @@ export function SaleDetails({ sale }: { sale: ISale }) {
                         ))}
                     </div>
                 </div>
-            </section>
-        </div>
+            </Container>
+        </section>
     )
 }

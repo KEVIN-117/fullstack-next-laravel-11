@@ -13,7 +13,6 @@ export function ProductDetail({ product }: { product: IProduct }) {
             <section className="container rounded-lg p-8 backdrop-blur-sm bg-stone-950/90">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-10 place-content-stretch">
                     <Image
-
                         className="w-[100%] mx-auto shadow-xl rounded-xl object-scale-down shadow-indigo-900"
                         src={product.image}
                         alt={product.name}

@@ -10,3 +10,7 @@ import { getFetcher } from "@/utils/fetchUtils"
 export async function getAllProducts() {
     return await getFetcher<IAllProductsResponse>({ url: "/products/all" });
 }
+
+export async function getProductByCategory(categoryId: string) {
+    return await getFetcher<IAllProductsResponse>({ url: `/products/category/${categoryId}` });
+}

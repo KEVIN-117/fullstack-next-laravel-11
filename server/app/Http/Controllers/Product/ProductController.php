@@ -150,6 +150,26 @@ class ProductController extends Controller
         ], 200);
     }
 
+    public function getProductByCategory(string $id)
+    {
+        $products = DB::table('products')
+            ->where('category_id', $id)
+            ->get();
+
+        if (empty($products)) {
+            return response()->json([
+                "message" => "There are no registered products",
+                "status" => 200
+            ], 200);
+        }
+
+        return response()->json([
+            "products" => new ProductCollection($products),
+            "message" => "All products",
+            "status" => 200
+        ], 200);
+    }
+
     private function createSlug(string $name): string
     {
         $name = strtolower($name);
